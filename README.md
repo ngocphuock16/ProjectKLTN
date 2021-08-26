@@ -1,7 +1,7 @@
 # ProjectKLTN
 Khoá luận tốt nghiệp đề tài "Thiết kế và phát triển website tin tức công nghệ" sử dụng ASP.NET with EntityFrameWork
-<br>
-Hướng dẫn cài đặt:
+<br><br>
+<b>Hướng dẫn cài đặt:</b>
 <br>
 B1: Download source về giải nén và chạy
 <br>
