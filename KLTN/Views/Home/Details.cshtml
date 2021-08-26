@@ -1,0 +1,133 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Details";
+    var relatedBlogs = (List<Blog>)ViewBag.ListRelatedBlogs;
+}
+
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner d-flex align-items-center">
+    <div class="container text-center">
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    @*
+                        <div class="feature-img">
+                           <img class="img-fluid" src="@CommonDefault.ImagePath@Model.Image" alt="">
+                        </div>
+                    *@
+                    <div class="blog_details">
+                        <a class="blog_item_date">
+                            <b>Ngày đăng: </b> <span>@Model.PublishDate</span>
+                        </a>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><a href=""><i class="far fa-user"></i>Thể loại: @Model.Category.CategoryName</a></li>
+                            <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                        </ul>
+                        <h2>
+                            @Model.Title
+                        </h2>
+                        <p class="excert">
+                            @Model.ShortContent
+                        </p>
+                        <img class="img-fluid" src="@CommonDefault.ImagePath@Model.Image" alt="">
+                        <p>@Model.FullContent</p>
+                        <p></p>
+                        <p class="text-right">Người đăng: Admin</p>
+                    </div>
+                </div>
+                <div class="navigation-top">
+                    <div class="d-sm-flex justify-content-between text-center">
+                        <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4 people like this</p>
+                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                            <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> 06 Comments</p>
+                        </div>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Search Keyword">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100" type="submit">Search</button>
+                        </form>
+                    </aside>
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Tin tức liên quan</h3>
+                        @foreach (var item in relatedBlogs.Take(3))
+                        {
+                            var url = "/Home/Details/" + item.Id;
+                            <div>
+                                <a href="@url"><img src="@CommonDefault.ImagePath@item.Image" width="50%" height="50%"></a>
+                                <div>
+                                    <a href="single-blog.html">
+                                        <p>
+                                            <a href="@url">
+                                        <p>@item.Title</p>
+                                    </a></p>
+                                    </a>
+                                    <p>@item.PublishDate</p>
+                                    <hr />
+                                </div>
+                            </div>
+                        }
+                    </aside>
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title">Tag Clouds</h4>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

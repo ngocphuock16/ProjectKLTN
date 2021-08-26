@@ -1,0 +1,19 @@
+﻿@model Category
+@{ Layout = "~/Views/Shared/_LayoutDashBoard.cshtml"; }
+
+<form method="post" asp-action="DeleteCategory">
+    <input asp-for="Id" hidden />
+    <h2 class="text-danger">Xoá thể loại</h2>
+    <br />
+    <p class="text-center" style="font-size:30px">Hãy xác nhận xoá thể loại @Model.CategoryName!</p>
+    <div class="row form-group">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <input type="submit" value="Đồng ý" class="btn btn-primary" />
+        </div>
+        <div class="col-md-4">
+            <a asp-action="Index" class="btn btn-secondary">Trở về</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,121 @@
+﻿@model HomeIndexVM
+
+<section class="hero-banner d-flex align-items-center">
+    <div class="container text-center">
+        <h2>Home</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+<section class="blog_area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                @foreach (var blog in Model.Blogs.OrderByDescending(x => x.PublishDate))
+                {
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img src="@CommonDefault.ImagePath@blog.Image" />
+                                <a class="blog_item_date">
+                                    <h3>@blog.PublishDate</h3>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="#" @*asp-controller="BlogSingle" asp-action="Index"*@>
+                                    <h4>
+                                        <a asp-controller="Home" asp-action="Details" asp-route-Id="@blog.Id">
+                                            @blog.Title
+                                        </a>
+                                    </h4>
+                                </a>
+                                <a asp-controller="Home" asp-action="Details" asp-route-Id="@blog.Id">
+                                    @blog.ShortContent
+                                </a>
+                                <ul class="blog-info-link">
+                                    <li><i class="far fa-user"></i>@blog.Category.CategoryName</li>
+                                </ul>
+                            </div>
+                            @* <a asp-controller="Home" asp-action="Details" asp-route-Id="@blog.Id" class="btn btn-sm btn-success">Chi tiết</a>*@
+                        </article>
+                    </div>
+                    <hr />
+                }
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Search Keyword">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100" type="submit">Search</button>
+                        </form>
+                    </aside>
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">Thể loại</h4>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <ul class="list cat-list">
+                                <li>
+                                    <p>@category.CategoryName</p>
+                                </li>
+                            </ul>
+                        }
+                    </aside>
+                    @*
+                        <aside class="single_sidebar_widget popular_post_widget">
+                           <h3 class="widget_title"></h3>
+                           <div class="media post_item">
+                              <img src="img/blog/popular-post/post1.jpg" alt="post">
+                              <div class="media-body">
+                                 <a href="single-blog.html">
+                                    <h3>From life was you fish...</h3>
+                                 </a>
+                                 <p>January 12, 2019</p>
+                              </div>
+                           </div>
+                           <div class="media post_item">
+                              <img src="img/blog/popular-post/post2.jpg" alt="post">
+                              <div class="media-body">
+                                 <a href="single-blog.html">
+                                    <h3>The Amazing Hubble</h3>
+                                 </a>
+                                 <p>02 Hours ago</p>
+                              </div>
+                           </div>
+                           <div class="media post_item">
+                              <img src="img/blog/popular-post/post3.jpg" alt="post">
+                              <div class="media-body">
+                                 <a href="single-blog.html">
+                                    <h3>Astronomy Or Astrology</h3>
+                                 </a>
+                                 <p>03 Hours ago</p>
+                              </div>
+                           </div>
+                           <div class="media post_item">
+                              <img src="img/blog/popular-post/post4.jpg" alt="post">
+                              <div class="media-body">
+                                 <a href="single-blog.html">
+                                    <h3>Asteroids telescope</h3>
+                                 </a>
+                                 <p>01 Hours ago</p>
+                              </div>
+                           </div>
+                        </aside>
+                    *@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

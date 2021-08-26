@@ -1,0 +1,88 @@
+﻿@model List<Blog>
+@{ Layout = "~/Views/Shared/_LayoutDashBoard.cshtml"; }
+
+<div>
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Danh sách Bài viết</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Blog" asp-action="Create" class="btn btn-primary">
+                Thêm bài viết mới
+            </a>
+        </div>
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%" id="tbCategory">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Publish Date
+                    </th>
+                    <th>
+                        Short Content
+                    </th>
+                    @*
+                        <th>
+                           Full Content
+                        </th>
+                    *@
+                    <th>
+                        Category Name
+                    </th>
+                    <th>
+                        Hành động
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var blogs in Model)
+                {
+                    <tr>
+                        <td width="20%">
+                            @blogs.Title
+                        </td>
+                        <td width="20%">
+                            <img src="@CommonDefault.ImagePath@blogs.Image" alt="Alternate Text" class="card-img-top img-fluid d-block mx-auto mb-3" />
+                        </td>
+                        <td width="10%">
+                            @blogs.PublishDate
+                        </td>
+                        <td width="20%">
+                            @blogs.ShortContent
+                        </td>
+                        @*
+                            <td width="50%">
+                               @blogs.FullContent
+                            </td>
+                        *@
+                        <td width="10%">
+                            @blogs.Category.CategoryName
+                        </td>
+                        <td>
+                            <div>
+                                <a asp-controller="Blog" asp-action="Edit" asp-route-Id="@blogs.Id" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a asp-controller="Blog" asp-action="Delete" asp-route-Id="@blogs.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Danh sách bài viết trống</p>
+    }
+</div>
+@section Scripts{
+    <script src="~/js/category.js" asp-append-version="true"></script>
+}
