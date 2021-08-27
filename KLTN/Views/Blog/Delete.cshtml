@@ -1,26 +1,22 @@
 ﻿@model Blog
 @{ Layout = "~/Views/Shared/_LayoutDashBoard.cshtml"; }
 
-<div class="main-container">
     <form method="post" asp-action="DeleteBlog">
         <input asp-for="Id" hidden />
-        <div>
-            <div class="form-group row">
-                <h2 class="text-info">Xóa</h2>
-            </div>
+                <h2 class="text-danger">Xóa bài viết</h2><br />
             <div class="row">
                 <div class="col-8">
-                    <p class="text-center">Bạn có chắc chắn là muốn xóa thể loại bài viết này không.</p>
+                    <p class="text-center" style="font-size:30px">Hãy xác nhận xoá bài viết <b>@Model.Title!</b></p>
                     <div class="row form-group">
-                        <div class="col">
-                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        <div class="col-md-3">
                         </div>
-                        <div class="col">
-                            <a asp-action="Index" class="btn btn-success">Back</a>
+                        <div class="col-md-3">
+                            <input type="submit" value="Đồng ý" class="btn btn-primary" />
+                        </div>
+                        <div class="col-md-4">
+                            <a asp-action="Index" class="btn btn-secondary">Trở về</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
-</div>

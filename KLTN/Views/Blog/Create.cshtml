@@ -11,17 +11,17 @@
                 <div class="col-10">
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Tiêu đề</label>
+                            <label><b>Tiêu đề:</b></label>
                         </div>
                         <div class="col-8">
-                            <input asp-for="Blog.Title" class="form-control" id="title" />
+                            <input asp-for="Blog.Title" class="form-control" id="title" placeholder="Nhập tiều đề bài viết..." />
                             <span asp-validation-for="Blog.Title" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Ngày xuất bản</label>
+                            <label><b>Ngày xuất bản:</b></label>
                         </div>
                         <div class="col-8">
                             <input asp-for="Blog.PublishDate" class="form-control" />
@@ -31,26 +31,26 @@
 
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Nội dung ngắn</label>
+                            <label><b>Nội dung ngắn:</b></label>
                         </div>
                         <div class="col-8">
-                            <textarea asp-for="Blog.ShortContent" class="form-control"></textarea>
+                            <textarea asp-for="Blog.ShortContent" class="form-control" id="sc" placeholder="Nhập nội dung ngắn..."></textarea>
                             <span asp-validation-for="Blog.ShortContent" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Nội dung đầy đủ</label>
+                            <label><b>Nội dung đầy đủ:</b></label>
                         </div>
                         <div class="col-8">
-                            <textarea asp-for="Blog.FullContent" class="form-control"></textarea>
+                            <textarea asp-for="Blog.FullContent" class="form-control"  id="fc" placeholder="Nhập nội dung đầy đủ..."></textarea>
                             <span asp-validation-for="Blog.FullContent" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-4">
-                            Hình ảnh
+                            <b>Hình ảnh:</b>
                         </div>
                         <div class="col-8">
                             <input type="file" name="files" value="" class="form-control" id="uploadBox" />
@@ -59,7 +59,7 @@
 
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Thể loại</label>
+                            <label><b>Thể loại:</b></label>
                         </div>
                         <div class="col-8">
                             <select asp-for="Blog.CategoryId" asp-items="@Model.CategorySelectList" class="form-control">
@@ -71,7 +71,7 @@
 
                     <div class="row form-group">
                         <div class="col-4">
-                            <label>Thẻ bài viết</label>
+                            <label><b>Thẻ bài viết:</b></label>
                         </div>
                         <div class="col-8">
                             <select id="picktag" asp-for="@Model.SelectListTagIds" asp-items="@Model.TagSelectList" class="form-control" multiple>
@@ -100,10 +100,47 @@
     <script type="text/javascript">
         function validateInput() {
             console.log(document.getElementById("uploadBox").value);
+            var t = document.getElementById("title").value;
+            var sc = document.getElementById("sc").value;
+            var fc = document.getElementById("fc").value;
+            var picktag = document.getElementById("picktag").value;
+
+            if (t == "") {
+                Swal.fire(
+                    'Error!',
+                    'Nhập tiêu đề bài viết!',
+                    'error'
+                )
+                return false;
+            }
+            if (sc == "") {
+                Swal.fire(
+                    'Error!',
+                    'Nhập nội dung ngắn!',
+                    'error'
+                )
+                return false;
+            }
+            if (fc == "") {
+                Swal.fire(
+                    'Error!',
+                    'Nhập nội dung đầy đủ!',
+                    'error'
+                )
+                return false;
+            }
             if (document.getElementById("uploadBox").value == "") {
                 Swal.fire(
                     'Error!',
                     'Please upload an Image!',
+                    'error'
+                )
+                return false;
+            }
+            if (picktag == "") {
+                Swal.fire(
+                    'Error!',
+                    'Chọn thẻ bài viết!',
                     'error'
                 )
                 return false;

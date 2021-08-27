@@ -54,7 +54,8 @@ namespace ProjectKLTN.Controllers
             HomeIndexVM homeIndexVM = new HomeIndexVM()
             {
                 Blogs = _appDbContext.Blogs.Include(p => p.Category).ToList(),
-                Categories = _appDbContext.Categories
+                Categories = _appDbContext.Categories,
+                Tags = _appDbContext.Tags
             };
             return View(homeIndexVM);
         }
