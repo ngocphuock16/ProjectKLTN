@@ -2,17 +2,18 @@
 
 <section class="hero-banner d-flex align-items-center">
     <div class="container text-center">
-        <h2>Home</h2>
-        <nav aria-label="breadcrumb" class="banner-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
-            </ol>
-        </nav>
+        <h2>Trang chủ</h2>
+        
     </div>
 </section>
 <!--================Hero Banner Area End =================-->
-<section class="blog_area area-padding">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
+    </ol>
+
+<section class="blog_area area-padding" style="padding-top:10px">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">

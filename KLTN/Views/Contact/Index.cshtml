@@ -2,13 +2,13 @@
 <!--================Hero Banner Area Start =================-->
 <section class="hero-banner d-flex align-items-center">
     <div class="container text-center">
-        <h2>Contact</h2>
-        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+        <h2>Hỗ trợ</h2>
+       @* <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                <li class="breadcrumb-item active" aria-current="page">Hỗ trợ</li>
             </ol>
-        </nav>
+        </nav>*@
     </div>
 </section>
 <!--================Hero Banner Area End =================-->
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="contact-title">Liên hệ với chúng tôi</h2>
+                <h2 class="contact-title">Đóng góp về nội dung cho chúng tôi</h2>
             </div>
             <div class="col-lg-8">
                 <form method="post" asp-action="CreateContact">
@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <textarea class="form-control w-100" asp-for="SupportContent" cols="30" rows="9" placeholder="Nhập nội dung cần hỗ trợ..."></textarea>
+                                <textarea class="form-control w-100" asp-for="SupportContent" cols="30" rows="9" placeholder="Nhập nội dung góp ý..."></textarea>
                                 <span asp-validation-for="SupportContent" class="text-danger"></span>
                             </div>
                         </div>
